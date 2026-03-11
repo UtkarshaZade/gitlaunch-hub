@@ -232,12 +232,16 @@ export default function Dashboard() {
           html_url: r.html_url, live: false,
         }));
       }
-      const merged = data.map((r: Repo) => {
-        const prev = cachedRepos.current.find(p => p.id === r.id);
-        return { ...r, live: prev?.live ?? r.live };
-      });
-      setRepos(merged);
-      cachedRepos.current = merged;
+      // Trust Lambda's live values directly — they come from S3 toggles
+// Only use cache if Lambda call failed and we fell back to GitHub
+const isFromLambda = !data.some((r: Repo) => r.live === undefined);
+const merged = data.map((r: Repo) => {
+  if (isFromLambda) return r; // Lambda already has correct toggle states from S3
+  const prev = cachedRepos.current.find(p => p.id === r.id);
+  return { ...r, live: prev?.live ?? false };
+});
+setRepos(merged);
+cachedRepos.current = merged;
       setLastSync(new Date().toLocaleTimeString());
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to load repositories');
