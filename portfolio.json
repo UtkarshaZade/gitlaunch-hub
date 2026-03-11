@@ -1,0 +1,29 @@
+{
+  "repos": [],
+  "experience": [
+    {
+      "id": "job1",
+      "title": "Market and Data Analyst Intern",
+      "company": "Raymond Ltd.",
+      "date": "Dec 2025 – Jan 2026",
+      "bullets": [
+        "Conducted customer satisfaction study for Raymond's fashion wear using structured questionnaires and surveys.",
+        "Collected and analyzed primary data from approximately 100 respondents.",
+        "Performed data interpretation using charts and summary statistics.",
+        "Prepared analytical findings, conclusions, and business recommendations."
+      ]
+    },
+    {
+      "id": "job2",
+      "title": "Web Development Intern",
+      "company": "RJGF Foundation",
+      "date": "Jun 2025 – Aug 2025",
+      "bullets": [
+        "Developed and integrated 5+ content sections to present NGO initiatives.",
+        "Used HTML and CSS with focus on responsiveness and accessibility.",
+        "Collaborated in a team of four to design and deploy the official website."
+      ]
+    }
+  ],
+  "lastSync": null
+}
